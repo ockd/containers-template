@@ -9,10 +9,10 @@ export class OpenCodeContainer extends Container {
   // 유휴 시 자동 절전 (10분)
   sleepAfter = "10m";
 
-  // 컨테이너 환경변수 주입 (cloudflare:workers 모듈에서 env 참조)
+  // 컨테이너 환경변수 주입 (공식 환경변수명 사용)
   envVars = {
-    PASSWORD:          env.PASSWORD,
-    OPENCODE_PASSWORD: env.PASSWORD,
+    OPENCODE_SERVER_PASSWORD: env.PASSWORD,
+    OPENCODE_SERVER_USERNAME: "opencode",
   };
 
   onStart() {
