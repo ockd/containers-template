@@ -1,4 +1,5 @@
 import { Container } from "@cloudflare/containers";
+import { env } from "cloudflare:workers";
 
 // OpenCode 컨테이너 Durable Object 클래스
 export class OpenCodeContainer extends Container {
@@ -8,10 +9,10 @@ export class OpenCodeContainer extends Container {
   // 유휴 시 자동 절전 (10분)
   sleepAfter = "10m";
 
-  // 컨테이너 환경변수 주입
+  // 컨테이너 환경변수 주입 (cloudflare:workers 모듈에서 env 참조)
   envVars = {
-    PASSWORD:          this.env.PASSWORD,
-    OPENCODE_PASSWORD: this.env.PASSWORD,
+    PASSWORD:          env.PASSWORD,
+    OPENCODE_PASSWORD: env.PASSWORD,
   };
 
   onStart() {
