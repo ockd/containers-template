@@ -6,12 +6,13 @@ EXPOSE 4096
 # 비대화형 환경 설정
 ENV TERM=dumb
 
-# OpenCode가 요구하는 최소 git 작업 디렉토리 생성
-RUN mkdir -p /workspace && \
+# git 설치 및 최소 작업 디렉토리 생성 (OpenCode는 git repo 필수)
+RUN apk add --no-cache git && \
+    mkdir -p /workspace && \
     cd /workspace && \
     git init && \
     git config user.email "container@opencode.ai" && \
-    git config user.name "OpenCode Container"
+    git config user.name "OpenCode"
 
 WORKDIR /workspace
 
