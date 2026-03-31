@@ -1,0 +1,18 @@
+# OpenCode.ai 컨테이너 배포 설정
+name              = "opencode-container"
+main              = "src/index.js"
+compatibility_date  = "2026-03-31"
+compatibility_flags = ["nodejs_compat"]
+
+[[containers]]
+class_name    = "OpenCodeContainer"
+image         = "./Dockerfile"
+max_instances = 1
+
+[[durable_objects.bindings]]
+name       = "OPENCODE_CONTAINER"
+class_name = "OpenCodeContainer"
+
+[[migrations]]
+tag                = "v1"
+new_sqlite_classes = ["OpenCodeContainer"]
